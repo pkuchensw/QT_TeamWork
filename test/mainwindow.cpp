@@ -36,7 +36,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    this->~MainWindow();
+    this->close();
 }
 
 

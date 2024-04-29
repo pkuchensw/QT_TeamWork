@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     QLabel *label = new QLabel(&window);
     label->setGeometry(QRect(10, 10, 180, 180));
 
-    QMovie *movie = new QMovie("C:\\Users\\86135\\Desktop\\QT\\test\\resources\\rabbit.gif"); // 替换为你的GIF文件路径
+    QMovie *movie = new QMovie("C:\\Users\\86135\\Desktop\\QT\\test\\image\\rabbit.gif"); // 替换为你的GIF文件路径
     label->setMovie(movie);
     movie->start();
     window.show();
