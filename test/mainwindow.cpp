@@ -18,9 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-    delete anima;
-    delete m_animation;
+    this->close();
 
 }
 
@@ -32,7 +30,6 @@ void MainWindow::on_pushButton_clicked()
 
 
 }
-
 
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -51,16 +48,15 @@ void MainWindow::on_pushButton_3_clicked()
     anima->addAnimation(m_animation);
 
     //QThread::msleep(3000);
-
+    /*
     QPropertyAnimation* m=new QPropertyAnimation();
-    //QPropertyAnimation*  m=m_animation;
     m->setTargetObject(&(this->ui->q[0]));
     m->setPropertyName("pos");    //指定动画属性名
     m->setDuration(1000);    //设置动画时间（单位：毫秒）
     m->setStartValue(ui->q[0].pos());  //设置动画起始位置在label控件当前的pos
     m->setEndValue(ui->q[0].pos() + QPoint(200, 100)); //设置动画结束位置
     anima->addAnimation(m);
-
+    */
     anima->start();
 }
 

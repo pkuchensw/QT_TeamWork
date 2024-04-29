@@ -10,16 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     dialog.cpp \
-    hello.cpp \
     home.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mymove.cpp
 
 HEADERS += \
     dialog.h \
-    hello.h \
     home.h \
-    mainwindow.h
+    mainwindow.h \
+    mymove.h
 
 FORMS += \
     dialog.ui \
@@ -35,4 +35,6 @@ DISTFILES += \
     image/rabbit.gif \
     resource
 
-RESOURCES +=
+RESOURCES += \
+    image.qrc
+

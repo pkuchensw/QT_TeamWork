@@ -2,14 +2,18 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
+#include<QObject>
+#include <random>
 #include<QButtonGroup>
 #include <QDialog>
-#include <QPropertyAnimation>
 #include<QThread>
+#include <QPropertyAnimation>
+#include<QTimer>
 #include <QVBoxLayout>
 #include<QMovie>
 #include"mainwindow.h"
 #include"home.h"
+#include"mymove.h"
 class MyButton : public QWidget {
 
 public:
@@ -25,30 +29,11 @@ MyButton::MyButton(QWidget *parent)
     It is defined in the QApplication header file.**/
     connect(quitBtn, &QPushButton::clicked, qApp, &QApplication::quit); //信号槽 将pushbutton和quit连接
 }
-class mymove:public QObject{
-    public:
-        QWidget* label;
-        mymove(QWidget* label_){
-            label=label_;
-        }
-    public slots:
-        void moves(){
-        QPropertyAnimation *m_animation=new(QPropertyAnimation);
-        m_animation->setTargetObject(label);    //设置使用动画的控件
-        m_animation->setEasingCurve(QEasingCurve::Linear); //设置动画效果
-        m_animation->setPropertyName("pos");    //指定动画属性名
-        m_animation->setDuration(3000);    //设置动画时间（单位：毫秒）
-        m_animation->setStartValue(label->pos());  //设置动画起始位置在label控件当前的pos
-        m_animation->setEndValue(label->pos() + QPoint(200, 100)); //设置动画结束位置
-        m_animation->start();
-        return;
-    }
-};
 int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
-    MainWindow ma;
-    ma.show();
+    //MainWindow ma;
+    //ma.show();
 
     QWidget window;
     window.resize(450, 550);
@@ -56,18 +41,20 @@ int main(int argc, char *argv[]) {
     QLabel *label = new QLabel(&window);
     label->setGeometry(QRect(10, 10, 180, 180));
 
-    QMovie *movie = new QMovie("C:\\Users\\86135\\Desktop\\QT\\test\\image\\rabbit.gif"); // 替换为你的GIF文件路径
+    //QMovie *movie = new QMovie("C:\\Users\\86135\\Desktop\\QT\\test\\image\\rabbit.gif"); // 替换为你的GIF文件路径
+    QMovie *movie = new QMovie(":/new/prefix1/image/rabbit.gif"); // 替换为你的GIF文件路径
+
     label->setMovie(movie);
     movie->start();
     window.show();
-
-
-    QThread::msleep(1000);
     QPushButton *p = new QPushButton(&window);
     p->move(0,0);
     p->show();
+
+    int flag=5;
     mymove *m=new mymove(label);
-    QObject::connect(p,&QPushButton::clicked,m,&mymove::moves);
+    QObject::connect(p,&QPushButton::clicked,m,&mymove::move);
+
 
     /*
     home a;
