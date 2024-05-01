@@ -1,18 +1,35 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include<QDebug>
-#include<QPropertyAnimation>
-#include<QThread>
-#include<cstring>
+#include <QApplication>
+#include <QWidget>
+#include <QPushButton>
+#include <QLabel>
+#include <QObject>
+#include <random>
+#include <QButtonGroup>
+#include <QDialog>
+#include <QThread>
+#include <QPropertyAnimation>
+#include <QTimer>
+#include <QVBoxLayout>
+#include <QMovie>
+#include"mainwindow.h"
+#include"home.h"
+#include"mymove.h"
+#include<creature.h>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    m_animation = new QPropertyAnimation();
-    ui->q=new QLabel[10];
-    ui->q[0].setText("qlabel");
-    ui->q[0].setParent(this);
+    this->setWindowTitle("Population Evolution Simulator");
+    s= new setting;
+    for(int i=1;i<=s->initial_num;i++){
+        creature* fish=new creature(rand()%700,rand()%700,this);
+        c.push_back(fish);
+        mymove *m=new mymove(fish->label);
+        QObject::connect(ui->movebutton,&QPushButton::clicked,m,&mymove::continuemoves);
+    }
 
 }
 
@@ -24,10 +41,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    flag=1;
-    qDebug()<<"clicked";
-    this->setWindowTitle("hello world");
-
+    creature* fish=new creature(rand()%700,rand()%700,this);
+    c.push_back(fish);
+    mymove *m=new mymove(fish->label);
+    QObject::connect(ui->movebutton,&QPushButton::clicked,m,&mymove::continuemoves);
 
 }
 
@@ -37,26 +54,7 @@ void MainWindow::on_pushButton_2_clicked()
 }
 
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_movebutton_clicked()
 {
-    m_animation->setTargetObject(ui->label);    //设置使用动画的控件
-    m_animation->setEasingCurve(QEasingCurve::Custom); //设置动画效果
-    m_animation->setPropertyName("pos");    //指定动画属性名
-    m_animation->setDuration(3000);    //设置动画时间（单位：毫秒）
-    m_animation->setStartValue(ui->label->pos());  //设置动画起始位置在label控件当前的pos
-    m_animation->setEndValue(ui->label->pos() + QPoint(200, 100)); //设置动画结束位置
-    anima->addAnimation(m_animation);
-
-    //QThread::msleep(3000);
-    /*
-    QPropertyAnimation* m=new QPropertyAnimation();
-    m->setTargetObject(&(this->ui->q[0]));
-    m->setPropertyName("pos");    //指定动画属性名
-    m->setDuration(1000);    //设置动画时间（单位：毫秒）
-    m->setStartValue(ui->q[0].pos());  //设置动画起始位置在label控件当前的pos
-    m->setEndValue(ui->q[0].pos() + QPoint(200, 100)); //设置动画结束位置
-    anima->addAnimation(m);
-    */
-    anima->start();
 }
 

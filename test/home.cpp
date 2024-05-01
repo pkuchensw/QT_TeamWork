@@ -1,8 +1,10 @@
 #include "home.h"
 #include "ui_home.h"
+#include"readme.h"
 #include <QLabel>
 #include<QInputDialog>
 #include<cstring>
+#include"mainwindow.h"
 home::home(QWidget *parent)
     : QDialog(parent),ui(new Ui::home)
 {
@@ -14,34 +16,30 @@ home::~home()
     delete ui;
 }
 
-void home::on_a_clicked()
+void home::on_individual_clicked()
 {
-    QLabel *label=new(QLabel);
-    label->setParent(this);
-    label->setText("hello");
-
-    label->move(100,this->num*10+100);
-    this->num++;
-    label->show();
-    if(num==2){
-        int val=QInputDialog::getInt(this,tr("input"),tr("1000"));
-        num=val;
-    }
-
+    MainWindow*m=new MainWindow(this);
+    m->show();
 }
 
 
 void home::on_quit_clicked()
 {
-    ui->~home();
+    this->close();
 
 }
 
 
-void home::on_pushButton_2_clicked()
+void home::on_group_clicked()
 {
 
-    QString tmp=QString::fromStdString(std::to_string(num));
-    if(1)ui->label->setText(tmp);
+
+}
+
+
+void home::on_readme_clicked()
+{
+    readme* r=new readme;
+    r->show();
 }
 

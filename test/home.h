@@ -17,9 +17,10 @@ public:
     ~home();
 
 private slots:
-    void on_a_clicked();
+    void on_individual_clicked();
     void on_quit_clicked();
-    void on_pushButton_2_clicked();
+    void on_readme_clicked();
+    void on_group_clicked();
 
 private:
     Ui::home *ui;
