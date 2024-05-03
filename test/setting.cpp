@@ -19,3 +19,9 @@ void setting::on_initial_num_valueChanged(int arg1)
     initial_num=arg1;
 }
 
+
+void setting::on_buttonBox_accepted()
+{
+
+}
+

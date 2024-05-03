@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mymove.cpp \
+    network.cpp \
     readme.cpp \
     setting.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     home.h \
     mainwindow.h \
     mymove.h \
+    network.h \
     readme.h \
     setting.h
 

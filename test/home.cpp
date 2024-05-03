@@ -2,6 +2,7 @@
 #include "ui_home.h"
 #include"readme.h"
 #include <QLabel>
+#include<qpainter.h>
 #include<QInputDialog>
 #include<cstring>
 #include"mainwindow.h"

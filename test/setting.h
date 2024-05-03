@@ -19,6 +19,8 @@ public:
 private slots:
     void on_initial_num_valueChanged(int arg1);
 
+    void on_buttonBox_accepted();
+
 private:
     Ui::setting *ui;
 };

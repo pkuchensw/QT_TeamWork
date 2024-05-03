@@ -5,6 +5,7 @@
 #include<QMovie>
 #include<QLabel>
 #include<qdebug.h>
+#include<network.h>
 class creature : public QWidget
 {
     Q_OBJECT
@@ -13,6 +14,7 @@ public:
 
 signals:
 public:
+    network* nn;
     int type;
     int labelx,labely;
     int eyesight;
@@ -21,13 +23,19 @@ public:
     QMovie *movie;
 
 public:
-    //virtual foraging()=0;
+    void foraging();
     //virtual predation()=0;
     //virtual reproduction()=0;
 
 };
 
-//class fish:public creature{
-//};
+class fish:public creature{
+public:
+    explicit fish(int x,int y,QWidget *parent = nullptr);
+};
 
+class shark:public creature{
+public:
+    explicit shark(int x,int y,QWidget *parent = nullptr);
+};
 #endif // CREATURE_H
