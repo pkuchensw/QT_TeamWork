@@ -16,6 +16,7 @@ signals:
 public:
     network* nn;
     int type;
+    int age,orgx,orgy;
     int labelx,labely;
     int eyesight;
     int distance;
@@ -24,6 +25,7 @@ public:
 
 public:
     void foraging();
+    creature(const creature& a,QWidget *parent=nullptr);
     //virtual predation()=0;
     //virtual reproduction()=0;
 
@@ -38,4 +40,9 @@ class shark:public creature{
 public:
     explicit shark(int x,int y,QWidget *parent = nullptr);
 };
+class grass:public creature{
+public:
+   explicit grass(int x,int y,QWidget *parent = nullptr);
+};
+
 #endif // CREATURE_H

@@ -9,7 +9,9 @@
 home::home(QWidget *parent)
     : QDialog(parent),ui(new Ui::home)
 {
+
     ui->setupUi(this);
+    ui->loading->close();
 }
 
 home::~home()
@@ -19,8 +21,11 @@ home::~home()
 
 void home::on_individual_clicked()
 {
+
     MainWindow*m=new MainWindow(this);
+    //m->showFullScreen();
     m->show();
+    ui->loading->close();
 }
 
 
@@ -42,5 +47,11 @@ void home::on_readme_clicked()
 {
     readme* r=new readme;
     r->show();
+}
+
+
+void home::on_individual_pressed()
+{
+    this->ui->loading->show();
 }
 

@@ -108,6 +108,19 @@
     <string>quit</string>
    </property>
   </widget>
+  <widget class="QLabel" name="loading">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>90</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Loading.....</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

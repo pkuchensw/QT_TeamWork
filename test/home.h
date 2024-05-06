@@ -22,6 +22,8 @@ private slots:
     void on_readme_clicked();
     void on_group_clicked();
 
+    void on_individual_pressed();
+
 private:
     Ui::home *ui;
 };

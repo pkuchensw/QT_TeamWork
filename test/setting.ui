@@ -32,7 +32,7 @@
   <widget class="QSpinBox" name="initial_num">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>110</x>
      <y>40</y>
      <width>44</width>
      <height>25</height>

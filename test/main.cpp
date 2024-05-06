@@ -17,13 +17,14 @@
 #include"mymove.h"
 
 int main(int argc, char *argv[]) {
-
+    srand(time(0));
     QApplication app(argc, argv);
 
 
 
     home Home;
     Home.show();
+    //Home.showFullScreen();
 
     return app.exec();
 }

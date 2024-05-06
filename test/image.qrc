@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>image/shark.gif</file>
         <file>image/fish.gif</file>
+        <file>image/grass.jpg</file>
     </qresource>
 </RCC>

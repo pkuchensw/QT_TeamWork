@@ -239,7 +239,7 @@ class network {
 public:
     network(int n) :num(n) {
         N = new neuro[n * 2];
-        srand(time(NULL));
+        //srand(time(NULL));
         lr = 0.03;
         layer_num = 0;
         num = 0;

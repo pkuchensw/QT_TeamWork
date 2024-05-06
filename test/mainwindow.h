@@ -32,6 +32,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void new_start();
+public slots:
+    void destruct();
+    void forage();
 
 private slots:
     void on_pushButton_clicked();
@@ -43,6 +46,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_test_clicked();
+
+    void on_start_clicked();
 
 private:
     Ui::MainWindow *ui;
