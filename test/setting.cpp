@@ -6,7 +6,9 @@ setting::setting(QWidget *parent)
     , ui(new Ui::setting)
 {
     ui->setupUi(this);
-    initial_num=30;
+    initial[0]=50;
+    initial[1]=30;
+    initial[2]=10;
 }
 
 setting::~setting()
@@ -17,7 +19,19 @@ setting::~setting()
 
 void setting::on_initial_num_valueChanged(int arg1)
 {
-    initial_num=arg1;
+    initial[1]=arg1;
 }
 
+
+
+void setting::on_initial_num_2_valueChanged(int arg1)
+{
+    initial[2]=arg1;
+}
+
+
+void setting::on_initial_num_3_valueChanged(int arg1)
+{
+    initial[0]=arg1;
+}
 

@@ -29,17 +29,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Population Evolution Simulator");
     s= new setting;
-    for(int i=1;i<=s->initial_num;i++){
+    for(int i=1;i<=3*s->initial[0];i++){
         creature* an=new grass(rand()%700,rand()%700,this);
         c.push_back(an);
     }
-    for(int i=1;i<=s->initial_num;i++){
+    for(int i=1;i<=2*s->initial[1];i++){
         creature* an=new fish(rand()%700,rand()%700,this);
         c.push_back(an);
         mymove *m=new mymove(an);
         mv.push_back(m);
     }
-    for(int i=1;i<=s->initial_num;i++){
+    for(int i=1;i<=s->initial[2];i++){
         creature* an=new shark(rand()%700,rand()%700,this);
         c.push_back(an);
         mymove *m=new mymove(an);
@@ -64,7 +64,7 @@ void MainWindow::new_start(){
     while(!mv.empty()){
         mv.erase(it_);
     }
-    for(int i=1;i<=s->initial_num;i++){
+    for(int i=1;i<=s->initial[1];i++){
         creature* an=new fish(rand()%500,rand()%500,this);
         c.push_back(an);
         mymove *m=new mymove(an);
@@ -73,8 +73,8 @@ void MainWindow::new_start(){
 }
 
 void MainWindow::on_pushButton_clicked()
-{    
-    creature* an=new shark(rand()%700,rand()%700,this);
+{
+    creature* an=new whale(rand()%700,rand()%700,this);
     c.push_back(an);
     mymove *m=new mymove(an);
     mv.push_back(m);
@@ -87,13 +87,16 @@ void MainWindow::on_pushButton_2_clicked()
 }
 
 void MainWindow::destruct(){
-    int tmp[100],num=c.size();
+    int tmp[1000],num=c.size();
     for(itc i=c.begin();i<c.end();i++){
-        for(itc j=i+1;j<c.end();j++){
-            if(abs((*i)->labelx - (*j)->labelx)+abs((*i)->labely - (*j)->labely)<=20){
-                tmp[(i-c.begin())]=-1;
+        for(itc j=c.begin();j<c.end();j++){
+            if(tmp[(i-c.begin())]==-1||tmp[(j-c.begin())]==-1)continue;
+            if((*i)->type-(*j)->type==1 &&abs((*i)->labelx - (*j)->labelx)+abs((*i)->labely - (*j)->labely)<=50){
+                tmp[(j-c.begin())]=-1;
+                (*i)->hp++;
             }
         }
+        if((*i)->hp<=0)tmp[(i-c.begin())]=-1;
     }
     for(itc i=c.end()-1;i>=c.begin();i--){
         if(tmp[(i-c.begin())]==-1){
@@ -106,7 +109,8 @@ void MainWindow::destruct(){
 void MainWindow::forage(){
     int num=c.size();
     for(int i=0;i<num;i++){
-        if(c[i]->age>=2 && rand()%10>=8){
+        if(c[i]->age%3==1 && rand()%10>=7){
+
             creature *tmp=new creature(*c[i],this);
             c.push_back(tmp);
             mymove *m=new mymove(tmp);
@@ -116,6 +120,10 @@ void MainWindow::forage(){
 }
 void MainWindow::on_movebutton_clicked()
 {
+    for(int i=0;i<=10;i++){
+        creature* an=new grass(rand()%700,rand()%700,this);
+        c.push_back(an);
+    }
     for(int i=0;i<mv.size();i++){
         mv[i]->moves();
     }
@@ -132,7 +140,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_test_clicked()
 {
-    creature *tmp=new creature(*c[0],this);
+    creature *tmp=new creature(*c[100],this);
     c.push_back(tmp);
     mymove *m=new mymove(tmp);
     mv.push_back(m);

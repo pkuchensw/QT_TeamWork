@@ -9,6 +9,7 @@
 #include"setting.h"
 #include<mymove.h>
 #include<vector>
+#include<QPainter>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,13 @@ public:
     int initial_num;
     std::vector<creature* > c;
     std::vector<mymove* > mv;
+protected:
+    void paintEvent(QPaintEvent *event) override {
+        QPainter painter(this);
+        QPixmap pixmap("://image/ocean.jpg"); // 替换为你的图片路径
+        pixmap = pixmap.scaled(this->size(), Qt::KeepAspectRatio);
+        painter.drawPixmap(0, 0, this->width(), this->height(), pixmap);
+    }
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

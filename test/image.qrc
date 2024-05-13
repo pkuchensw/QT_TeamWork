@@ -3,5 +3,11 @@
         <file>image/shark.gif</file>
         <file>image/fish.gif</file>
         <file>image/grass.jpg</file>
+        <file>image/fish.png</file>
+        <file>image/shark.png</file>
+        <file>image/ocean.jpg</file>
+        <file>image/whale.gif</file>
+        <file>image/grass.gif</file>
+        <file>image/home.png</file>
     </qresource>
 </RCC>

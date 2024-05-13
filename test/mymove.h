@@ -9,7 +9,6 @@ class mymove : public QObject
 public:
     explicit mymove(creature* movec_ ,QObject *parent = nullptr);
 public:
-    //QWidget* label;
     creature* movec;
 
 public slots:

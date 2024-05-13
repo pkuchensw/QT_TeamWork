@@ -23,8 +23,8 @@ int main(int argc, char *argv[]) {
 
 
     home Home;
-    Home.show();
-    //Home.showFullScreen();
+    //Home.show();
+    Home.showFullScreen();
 
     return app.exec();
 }

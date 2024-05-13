@@ -16,7 +16,7 @@ signals:
 public:
     network* nn;
     int type;
-    int age,orgx,orgy;
+    int age,orgx,orgy,hp;
     int labelx,labely;
     int eyesight;
     int distance;
@@ -43,6 +43,11 @@ public:
 class grass:public creature{
 public:
    explicit grass(int x,int y,QWidget *parent = nullptr);
+};
+
+class whale:public creature{
+public:
+    explicit whale(int x,int y,QWidget *parent = nullptr);
 };
 
 #endif // CREATURE_H
